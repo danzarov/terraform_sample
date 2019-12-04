@@ -1,0 +1,22 @@
+---
+driver:
+  name: terraform
+  variable_files:
+    - terraform.tfvars
+
+provisioner:
+  name: terraform
+
+verifier:
+  name: terraform
+  systems:
+    - name: basic
+      backend: aws
+      controls:
+        - file_check
+
+platforms:
+  - name: terraform
+
+suites:
+  - name: example
