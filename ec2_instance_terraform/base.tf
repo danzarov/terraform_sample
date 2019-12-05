@@ -53,8 +53,24 @@ resource "aws_iam_role_policy" "ec2_policy_test" {
 EOF
 }
 
+data "aws_ami" "packer_generated_ami" {
+  most_recent = true
+  owners = ["self"]
+
+  filter {
+    name   = "state"
+    values = ["available"]
+  }
+
+  filter {
+    name   = "name"
+    values = ["packer-example-*"]
+  }
+
+}
+
 resource "aws_instance" "dannyinstance_1" {
-  ami           = var.aws_ami
+  ami           = data.aws_ami.packer_generated_ami.id
   instance_type = var.aws_instance_type
   key_name      = var.aws_key_name
   iam_instance_profile = aws_iam_instance_profile.ec2_profile_test.name

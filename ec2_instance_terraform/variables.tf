@@ -10,10 +10,6 @@ variable "aws_region" {
   description = "AWS REGION"
 }
 
-variable "aws_ami" {
-  description = "AWS AMI"
-}
-
 variable "aws_instance_type" {
   description = "AWS INSTANCE TYPE"
 }
