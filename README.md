@@ -19,7 +19,6 @@ export TF_VAR_aws_region="us-west-2"
 export TF_VAR_aws_ami="<ami_you_want>"
 export TF_VAR_aws_instance_type="t2.micro"
 export TF_VAR_aws_key_name="<your_key_name>"
-export TF_VAR_aws_s3_role_name="ec2-bucket-reader"
 ```
 
 4. bundle install 
