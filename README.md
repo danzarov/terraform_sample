@@ -16,8 +16,6 @@ export AWS_REGION='us-west-2'
 export TF_VAR_aws_access_key="<your_aws_access_key>"
 export TF_VAR_aws_secret_key="<your_aws_secret_key>"
 export TF_VAR_aws_region="us-west-2"
-export TF_VAR_aws_ami="<ami_you_want>"
-export TF_VAR_aws_instance_type="t2.micro"
 export TF_VAR_aws_key_name="<your_key_name>"
 ```
 
@@ -50,8 +48,12 @@ note: the image name was found by using the aws cli describe command:
 
 2. terraform init
 
-3. export TF_VAR_aws_ami="<ami_we_just_copied_above>"
+3. Export the variables needed for the ec2 creation 
 
+```
+export TF_VAR_aws_ami="<ami_we_just_copied_above>" 
+export TF_VAR_aws_instance_type="t2.micro"
+```
 3. terraform plan && terraform apply
 
 4. ssh into the recently created ec2 instance and the files test1.txt and test2.txt from the s3 bucket will be located at /
