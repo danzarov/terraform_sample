@@ -13,10 +13,10 @@ export AWS_REGION='us-west-2'
 3. Export the variables needed for the terraform code using TF_VAR_<variable_name> 
 
 ```
-export TF_VAR_aws_access_key="<your_aws_access_key>"
-export TF_VAR_aws_secret_key="<your_aws_secret_key>"
-export TF_VAR_aws_region="us-west-2"
-export TF_VAR_aws_key_name="<your_key_name>"
+export AWS_ACCESS_KEY_ID="<your_aws_access_key>"
+export AWS_SECRET_ACCESS_KEY="<your_aws_secret_key>"
+export AWS_DEFAULT_REGION="us-west-2"
+
 ```
 
 4. bundle install 
@@ -50,6 +50,7 @@ note: the image name was found by using the aws cli describe command:
 
 ```
 export TF_VAR_aws_instance_type="t2.micro"
+export TF_VAR_aws_key_name="<your_key_name>"
 ```
 3. terraform plan && terraform apply
 
