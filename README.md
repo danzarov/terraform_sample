@@ -10,7 +10,7 @@ export AWS_SECRET_ACCESS_KEY="<your-secret-key>"
 export AWS_REGION='us-west-2'
 ```
 
-3. Export the variables needed for the terraform code using TF_VAR_<variable_name> 
+3. Export the variables needed for the aws provider 
 
 ```
 export AWS_ACCESS_KEY_ID="<your_aws_access_key>"
