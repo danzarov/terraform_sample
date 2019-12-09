@@ -2,7 +2,7 @@
 
 1. Clone the repository
 
-2. Export the environment variables below (these variables below will be needed for the kitchen test inspec, not the terraform)
+2. Export the environment variables below (the variables below will be used for both, terraform and kitchen)
 
 ```
 export AWS_ACCESS_KEY_ID="<your-access-id>"           
@@ -10,20 +10,11 @@ export AWS_SECRET_ACCESS_KEY="<your-secret-key>"
 export AWS_REGION='us-west-2'
 ```
 
-3. Export the variables needed for the aws provider 
+3. bundle install 
 
-```
-export AWS_ACCESS_KEY_ID="<your_aws_access_key>"
-export AWS_SECRET_ACCESS_KEY="<your_aws_secret_key>"
-export AWS_DEFAULT_REGION="us-west-2"
+4. bundle exec kitchen test
 
-```
-
-4. bundle install 
-
-5. bundle exec kitchen test
-
-6. bundle exec kitchen verify
+5. bundle exec kitchen verify
 
 ####################################
 ###### SECOND PART - PACKER ########
