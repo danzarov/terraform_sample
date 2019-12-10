@@ -1,6 +1,0 @@
-aws_access_key = "<your access key>"
-aws_secret_key = "<your secret key>"
-aws_region = "us-west-2"
-aws_ami = "<aws ami>"
-aws_instance_type = "t2.micro"
-aws_key_name = "<your-key-name>"

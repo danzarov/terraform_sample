@@ -1,0 +1,49 @@
+{
+  "variables": {
+    "aws_access_key": "{{env `TF_VAR_aws_access_key`}}",
+    "aws_secret_key": "{{env `TF_VAR_aws_secret_key`}}"
+  },
+  "builders": [{
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "region": "us-west-2",
+    "source_ami_filter": {
+      "filters": {
+        "virtualization-type": "hvm",
+        "name": "amzn2-ami-hvm-2.0.20191116.0-x86_64-gp2",
+        "root-device-type": "ebs"
+      },
+      "owners": "amazon",
+      "most_recent": true
+    },
+    "instance_type": "t2.micro",
+    "ssh_username": "ec2-user",
+    "ami_name": "packer-example-{{timestamp}}"
+  }],
+
+    "provisioners": [{
+      "type": "file",
+      "source": "wget_script.sh",
+      "destination": "/home/ec2-user/wget_script.sh"
+    },
+    {
+      "type": "shell",
+      "inline": ["chmod +x /home/ec2-user/wget_script.sh"]
+    },
+    {
+      "type": "file",
+      "source": "wget_systemd_service.service",
+      "destination": "/tmp/wget_systemd_service.service"
+    },
+    {
+      "type": "shell",
+      "inline": ["sudo mv /tmp/wget_systemd_service.service /lib/systemd/system/wget_systemd_service.service"]
+    },
+    {
+      "type": "shell",
+      "inline": ["sudo systemctl enable wget_systemd_service"]
+    }
+    ]
+}
+

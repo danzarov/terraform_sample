@@ -2,16 +2,47 @@
 
 1. Clone the repository
 
-2. Export the environment variables below
+2. Export the environment variables below (the variables below will be used for both, terraform and kitchen)
 
 ```
 export AWS_ACCESS_KEY_ID="<your-access-id>"           
 export AWS_SECRET_ACCESS_KEY="<your-secret-key>"
+export AWS_REGION='us-west-2'
 ```
-3. Change the values of a few variables in the terraform.tfvars file
 
-4. bundle install 
+3. bundle install 
 
-5. bundle exec kitchen test
+4. bundle exec kitchen test
 
-6. bundle exec kitchen verify
+5. bundle exec kitchen verify
+
+####################################
+###### SECOND PART - PACKER ########
+####################################
+
+1. cd packer
+
+2. /usr/local/bin/packer validate example.json
+
+3. /usr/local/bin/packer build example.json
+
+note: the image name was found by using the aws cli describe command:
+`ws ec2 describe-images --owners self amazon --region us-west-2`
+
+####################################
+#### THIRD PART - EC2 INSTANCE #####
+####################################
+
+1. cd ../ec2_instance_terraform
+
+2. terraform init
+
+3. Export the variables needed for the ec2 creation 
+
+```
+export TF_VAR_aws_instance_type="t2.micro"
+export TF_VAR_aws_key_name="<your_key_name>"
+```
+3. terraform plan && terraform apply
+
+4. ssh into the recently created ec2 instance and the files test1.txt and test2.txt from the s3 bucket will be located at /

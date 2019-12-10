@@ -1,0 +1,11 @@
+[Unit]
+Description=test service
+After=network.target
+After=systemd-user-sessions.service
+After=network-online.target
+
+[Service]
+ExecStart=/home/ec2-user/wget_script.sh
+
+[Install]
+WantedBy=multi-user.target
