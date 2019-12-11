@@ -1,4 +1,4 @@
-### Documentation to run and test the automation
+## Documentation to run and test the automation
 
 1. Clone the repository
 
@@ -16,9 +16,8 @@ export AWS_REGION='us-west-2'
 
 5. bundle exec kitchen verify
 
-####################################
-###### SECOND PART - PACKER ########
-####################################
+## Second Part - Packer
+
 
 1. cd packer
 
@@ -29,9 +28,7 @@ export AWS_REGION='us-west-2'
 note: the image name was found by using the aws cli describe command:
 `ws ec2 describe-images --owners self amazon --region us-west-2`
 
-####################################
-#### THIRD PART - EC2 INSTANCE #####
-####################################
+## Third Part - EC2 Instace 
 
 1. cd ../ec2_instance_terraform
 
